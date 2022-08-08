@@ -2,8 +2,10 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const ejs = require('ejs');
 
 const app = express();
+app.use('view engine', 'ejs');
 
 app.get('/', function (req, res) {
   var today = new Date();
