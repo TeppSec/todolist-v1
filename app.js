@@ -13,9 +13,8 @@ app.use(express.static('public'));
 
 // Response current Date to the Website
 app.get('/', (req, res) => {
-  
   let today = new Date();
-  
+
   let options = {
     weekday: 'long',
     day: 'numeric',
@@ -33,6 +32,5 @@ app.post('/', (req, res) => {
   res.redirect('/');
 });
 
-app.listen(3000, () => {
-  console.log('Server started on port 3000.');
-});
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log(`Listening on port ${port}...`));
