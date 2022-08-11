@@ -11,7 +11,9 @@
 
 <body>
     <div class="box" id="heading">
-        <h1>Es is <%= kindOfDay %>!!</h1>
+        <h1>
+            <%= titleDay %>, <%= titleDate %>
+        </h1>
     </div>
     <div class="box">
         <% for (var i=0; i<newListItems.length; i++) { %>
@@ -27,9 +29,9 @@
                     <button type="submit" name="Button">+</button>
                 </form>
     </div>
-    <div class="box">
+    <footer>
         <p>&copy; Oliver Tepper</p>
-    </div>
+    </footer>
 </body>
 
 </html>

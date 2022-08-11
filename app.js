@@ -2,10 +2,12 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const date = require(__dirname + '/date.js');
 
 const app = express();
 
-let items = [];
+const items = [];
+const workItems = [];
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -13,16 +15,10 @@ app.use(express.static('public'));
 
 // Response current Date to the Website
 app.get('/', (req, res) => {
-  let today = new Date();
+  let day = date.getDay();
+  let dayLong = date.getDate();
 
-  let options = {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-  };
-
-  let day = today.toLocaleDateString('de-DE', options);
-  res.render('list', { kindOfDay: day, newListItems: items });
+  res.render('list', { titleDay: day, newListItems: items, titleDate: dayLong });
 });
 
 // Get user input from the form

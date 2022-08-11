@@ -10,7 +10,7 @@ h1 {
 }
 
 .box {
-  max-width: 400px;
+  max-width: 430px;
   margin: 50px auto;
   background: white;
   border-radius: 5px;
@@ -63,7 +63,7 @@ button {
   background-color: #59b9d8;
   color: #fff;
   font-size: 30px;
-  padding-bottom: 6px;
+  padding-bottom: 0px;
   border-width: 0;
 }
 
@@ -75,7 +75,7 @@ input[type='text'] {
   background: transparent;
   font-size: 20px;
   font-weight: 200;
-  width: 313px;
+  width: 78%;
 }
 
 input[type='text']:focus {
