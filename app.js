@@ -2,6 +2,7 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+
 const date = require(__dirname + '/date.js');
 
 const app = express();
@@ -13,19 +14,39 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-// Response current Date to the Website
+// Root
 app.get('/', (req, res) => {
-  let day = date.getDay();
-  let dayLong = date.getDate();
-
-  res.render('list', { titleDay: day, newListItems: items, titleDate: dayLong });
+  let day = date.getDate();
+  res.render('list', { listTitle: day, newListItems: items });
 });
 
-// Get user input from the form
+// Query Work or Privat todo
 app.post('/', (req, res) => {
   let item = req.body.newItem;
-  items.push(item);
-  res.redirect('/');
+
+  if (req.body.list === 'Work') {
+    workItems.push(item);
+    res.redirect('/work');
+  } else {
+    items.push(item);
+    res.redirect('/');
+  }
+});
+
+// Work todo-list page
+app.get('/work', (req, res) => {
+  res.render('list', { listTitle: 'Work list', newListItems: workItems });
+});
+
+app.post('/work', (req, res) => {
+  let item = req.body.newItem;
+  workItems.push(item);
+  res.redirect('/work');
+});
+
+// About page
+app.get('/about', (req, res) => {
+  res.render('about');
 });
 
 const port = process.env.PORT || 3000;
